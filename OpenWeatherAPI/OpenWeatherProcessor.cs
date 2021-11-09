@@ -50,6 +50,11 @@ namespace OpenWeatherAPI
         /// <returns></returns>
         public async Task<OpenWeatherOneCallModel> GetOneCallAsync()
         {
+
+            if(ApiKey == null || ApiKey == "")
+            {
+                throw new ArgumentException("ApiKey is null or empty");
+            }
             
             EndPoint = $"/onecall?";
 
