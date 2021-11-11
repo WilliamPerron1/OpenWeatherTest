@@ -51,7 +51,16 @@ namespace OpenWeatherAPI
         public async Task<OpenWeatherOneCallModel> GetOneCallAsync()
         {
 
-            if(ApiKey == null || ApiKey == "")
+            if (ApiKey == null || ApiKey == "")
+            {
+                throw new ArgumentException("ApiKey is null or empty");
+            }
+            if (ApiHelper.ApiClient == null)
+            {
+                throw new ArgumentException("client http non initialiser");
+            }
+
+            if (ApiKey == null || ApiKey == "")
             {
                 throw new ArgumentException("ApiKey is null or empty");
             }
@@ -80,6 +89,15 @@ namespace OpenWeatherAPI
         /// <returns></returns>
         public async Task<OWCurrentWeaterModel> GetCurrentWeatherAsync()
         {
+
+            if (ApiKey == null || ApiKey == "")
+            {
+                throw new ArgumentException("ApiKey is null or empty");
+            }
+            if (ApiHelper.ApiClient == null)
+            {
+                throw new ArgumentException("client http non initialiser");
+            }
             EndPoint = $"/weather?";
 
             /// Src : https://stackoverflow.com/a/14517976/503842
